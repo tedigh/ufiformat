@@ -1,0 +1,119 @@
+<HTML>
+<meta http-equiv="content-type" content="text/html; charset=ISO8859-1">
+<HEAD>
+<TITLE>LOW LEVEL(PHYSICAL) FORMATTING TOOL ON USB-FDD (LINUX)</TITLE>
+</HEAD>
+<BODY>
+Japanese page is <A href=format_usbfdd.html>here</A>.<br>
+<br>
+<CENTER><h2>LOW LEVEL(PHYSICAL) FORMATTING TOOL ON USB-FDD (LINUX)</h2></CENTER>
+<br>
+<h4>NEWS:</h4>
+<blockquote>
+<h4>2011-Jan-29: Version 0.9.9 is released.</h4>
+<ul>
+<li>support for old sysfs, patch contributed by Kabe
+<li>add spec file, also contributed by Kabe
+</ul>
+<h4>2011-Jan-22: New spec file for the version 0.9.8 is contributed by Kabe.</h4>
+<h4>2010-Dec-01: Version 0.9.8 is released.</h4>
+<ul>
+<li>verification support for some unusual devices
+<li>fix typo
+</ul>
+<h4>2010-Nov-23: Version 0.9.7 is released.</h4>
+<ul>
+<li>add verification feature, thanks to Robert M. Stockmann
+</ul>
+<h4>2009-Nov-04: Version 0.9.6 is released.</h4>
+<ul>
+<li>bug fix of the method of usb floppy detection with sysfs
+</ul>
+<h4>2009-Oct-03: Version 0.9.5 is released.</h4>
+<ul>
+<li>use sysfs for the device detection (if not exist, use procfs)
+</ul>
+<h4>2007-Nov-17: Ufiformat's spec file for rpm package was contributed by Kabe.</h4>
+<h4>2007-Nov-10: Version 0.9.4 is released.</h4>
+<ul>
+<li>add path info in a error message when /dev/sg* is unavailable suggested by Kabe
+<li>add manpage contributed by Kabe
+<li>store ufiformat binary to (prefix)/bin instead of sbin
+</ul>
+<h4>2006-Nov-25: Version 0.9.3 is released. Patch contributed by Martin.</h4>
+<ul>
+<li>bug fix of device detection
+</ul>
+<h4>2006-Mar-08: As a result of co-work with John Floyd, new version 0.9.2 is released.</h4>
+New features:
+<ul>
+<li>format in various capacities
+<li>show device information
+<li>pre-format safety checks
+</ul>
+details in ChangeLog
+</blockquote>
+<br>
+<h4>This is formatting disk utility for USB floppy devices.</h4>
+<blockquote>
+<pre>
+Usage: ufiformat [OPTION]... [DEVICE]
+Format a floppy disk in a USB floppy disk DEVICE.
+
+  -f, --format [SIZE]  specify format capacity SIZE in KB
+                       without -f option, the format of the current media will be used.
+  -V, --verify         verify the medium after formatting
+  -F, --force          do not perform any safety checks
+  -i, --inquire        show device information, instead of performing format
+                       without DEVICE argument, list USB floppy disk devices
+  -v, --verbose        show detailed output
+  -q, --quiet          suppress minor output
+  -h, --help           show this message
+</pre>
+Examples:
+<table cellspacing=0 cellpadding=0>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>To format a media keeping its current geometry:&nbsp;&nbsp;</td><td><code>ufiformat /dev/sda</code></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>To format a media for 2hd(1.44MB):</td><td><code>ufiformat -f 1440 /dev/sda</code></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>To list USB floppy devices:</td><td><code>ufiformat -i</code></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>To show USB floppy device information:</td><td><code>ufiformat -i /dev/sda</code></td></tr>
+</table>
+To use this program, both /dev/sd* and /dev/sg* need to be accessible.<br>
+High-level formatting is usually needed after using this program(ex. mkfs.vfat -I /dev/sda).
+</blockquote>
+<br>
+<h4>This program is based around the following document:</h4>
+<blockquote>
+"<A href="http://www.usb.org/developers/devclass_docs/usbmass-ufi10.pdf">Universal Serial Bus Mass Storage Class - UFI Command Specification</A>" Revision 1.0 December 14 1998<br>
+</blockquote>
+<BR>
+<h4>Sources:</h4>
+<ul>
+<li><A HREF="ufiformat-0.9.9.tar.gz">ufiformat-0.9.9.tar.gz</a>(sources, spec file included)
+<li><A HREF="ufiformat-0.9.9.tgz">ufiformat-0.9.9.tgz</a>(x86 binaries)
+</ul>
+<h4>Old sources:</h4>
+<ul>
+<li><A HREF="ufiformat-0.9.8.tar.gz">ufiformat-0.9.8.tar.gz</a>(sources)
+<li><A HREF="ufiformat-0.9.8.tgz">ufiformat-0.9.8.tgz</a>(x86 binaries)
+<li><A HREF="ufiformat.spec.gz">ufiformat.spec.gz</a>(spec file for rpm package 0.9.8) - contributed by Kabe
+<li><A HREF="ufiformat-0.9.7.tar.gz">ufiformat-0.9.7.tar.gz</a>(sources)
+<li><A HREF="ufiformat-0.9.7.tgz">ufiformat-0.9.7.tgz</a>(x86 binaries)
+<li><A HREF="ufiformat-0.9.6.tar.gz">ufiformat-0.9.6.tar.gz</a>(sources)
+<li><A HREF="ufiformat-0.9.6.tgz">ufiformat-0.9.6.tgz</a>(x86 binaries)
+<li><A HREF="ufiformat-0.9.6.spec.gz">ufiformat-0.9.6.spec.gz</a>(spec file for rpm package 0.9.6) - contributed by Kabe
+<li><A HREF="ufiformat-0.9.5.tar.gz">ufiformat-0.9.5.tar.gz</a>(sources)
+<li><A HREF="ufiformat-0.9.5.tgz">ufiformat-0.9.5.tgz</a>(x86 binaries)
+<li><A HREF="ufiformat-0.9.4.tar.gz">ufiformat-0.9.4.tar.gz</a>(sources)
+<li><A HREF="ufiformat-0.9.4.tgz">ufiformat-0.9.4.tgz</a>(x86 binaries)
+<li><A HREF="ufiformat-0.9.3.tar.gz">ufiformat-0.9.3.tar.gz</a>(sources)
+<li><A HREF="ufiformat-0.9.3.tgz">ufiformat-0.9.3.tgz</a>(x86 binaries)
+<li><A HREF="ufiformat-0.9.2.tar.gz">ufiformat-0.9.2.tar.gz</a>(sources)
+<li><A HREF="ufiformat-0.9.2.tgz">ufiformat-0.9.2.tgz</a>(x86 binaries)
+<li><A HREF="ufiformat-0.1.tar.gz">ufiformat-0.1.tar.gz</a>(sources)
+</ul>
+This program is under GPL.
+<br>
+<br>
+<p>&#169; 2005-2011 <A HREF=mailto:tedi&#64;tedi.sakura.ne.jp><I>tedi&#64;tedi.sakura.ne.jp</I></A><br>
+</BODY>
+</HTML>

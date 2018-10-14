@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=EUC-JP">
+<TITLE>LOW LEVEL(PHYSICAL) FORMATTING TOOL ON USB-FDD (LINUX)</TITLE>
+</HEAD>
+<BODY>
+English page is <A href=format_usbfdd_e.html>here</A>.<br>
+<br>
+<CENTER><h2>USB-FDD 用物理フォーマットツール(LINUX)</h2></CENTER>
+<br>
+<h4>お知らせ</h4>
+<blockquote>
+<h4>2011-Jan-29: バージョン 0.9.9 をリリースしました</h4>
+<ul>
+<li>古いsysfsに対するサポートを追加しました(Kabeさん寄贈)
+<li>specファイルを添付しました(Kabeさん寄贈)
+</ul>
+<h4>2011-Jan-22: Kabeさんがバージョン 0.9.8用のspecファイルを送ってくださいました</h4>
+<h4>2010-Dec-01: バージョン 0.9.8 をリリースしました</h4>
+<ul>
+<li>ベリファイ時の動作について特殊なデバイスに対応しました
+<li>誤植を修正しました
+</ul>
+<h4>2010-Nov-23: バージョン 0.9.7 をリリースしました</h4>
+<ul>
+<li>フォーマット時のベリファイ機能を追加しました
+</ul>
+<h4>2009-Nov-04: バージョン 0.9.6 をリリースしました</h4>
+<ul>
+<li>sysfsを使用した場合のデバイス認識の不具合を解消しました
+</ul>
+<h4>2009-Oct-03: バージョン 0.9.5 をリリースしました</h4>
+<ul>
+<li>デバイス認識時にsysfsを使用します(存在しない場合はprocfsを使用します)
+</ul>
+<h4>2007-Nov-17: Kabeさんがrpmパッケージ用のspecファイルを送ってくださいました</h4>
+<h4>2007-Nov-10: バージョン 0.9.4 をリリースしました</h4>
+<ul>
+<li>sgデバイスが存在しない場合のエラーメッセージを改善しました(Kabeさんの提案です)
+<li>manページを追加しました(Kabeさんの提供です)
+<li>実行形式のインストール先を (prefix)/sbin から (prefix)/bin に変更しました
+</ul>
+<h4>2006-Nov-25: バージョン 0.9.3 をリリースしました Martin さんが修正パッチを提供してくれました</h4>
+<ul>
+<li>デバイス認識に関する不具合修正
+</ul>
+<h4>2006-Mar-08: John Floyd との共同作業により、新バージョン 0.9.2 をリリースしました</h4>
+新機能：
+<ul>
+<li>各種形式(1.44M/1.2M etc.)によるフォーマット
+<li>デバイス情報の表示
+<li>フォーマット前のセーフティチェック
+</ul>
+詳細は ChangeLog を参照
+</blockquote>
+<br>
+<h4>このプログラムは USB フロッピードライブ上で物理フォーマットを行うユーティリティです</h4>
+<blockquote>
+<pre>
+使い方: ufiformat [OPTION]... [DEVICE]
+USB フロッピードライブ DEVICE 上でフロッピーディスクを物理フォーマットする
+
+  -f, --format [SIZE]  フォーマット容量 SIZE をキロバイト単位で指定する
+                       -f を指定しない場合、現状のメディアのフォーマットを使用する
+  -V, --verify         フォーマット後にベリファイを行う
+  -F, --force          セーフティチェックを行わない
+  -i, --inquire        デバイス情報を表示する(フォーマットは行わない)
+                       DEVICE を指定しない場合は、USB フロッピードライブの一覧を表示する
+  -v, --verbose        詳細な出力を行う
+  -q, --quiet          重要でない出力を省略する
+  -h, --help           ヘルプメッセージを表示する
+
+例：
+  現状の形式を維持してフォーマット: ufiformat /dev/sda
+  1.44M形式でフォーマット:          ufiformat -f 1440 /dev/sda
+  デバイス一覧を表示:               ufiformat -i
+  デバイス情報を表示:               ufiformat -i /dev/sda
+  デバイス名はブロックデバイス(/dev/sd?)でもsgデバイス(/dev/sg*)でも構いませんが
+  フォーマット対象の両者のデバイスにアクセス可能であることが必要です
+  物理フォーマット後には、 mkfs.vfat -I /dev/sda などの論理フォーマットが必要です
+
+</pre>
+</blockquote>
+<br>
+<h4>このプログラムは次の文書に基づいています:</h4>
+<blockquote>
+"<A href="http://www.usb.org/developers/devclass_docs/usbmass-ufi10.pdf">Universal Serial Bus Mass Storage Class - UFI Command Specification</A>" Revision 1.0 December 14 1998<br>
+</blockquote>
+<BR>
+<h4>ソース:</h4>
+<ul>
+<li><A HREF="ufiformat-0.9.9.tar.gz">ufiformat-0.9.9.tar.gz</a>(sources, spec file included)
+<li><A HREF="ufiformat-0.9.9.tgz">ufiformat-0.9.9.tgz</a>(x86 binaries)
+</ul>
+<h4>古いソース:</h4>
+<ul>
+<li><A HREF="ufiformat-0.9.8.tar.gz">ufiformat-0.9.8.tar.gz</a>(sources)
+<li><A HREF="ufiformat-0.9.8.tgz">ufiformat-0.9.8.tgz</a>(x86 binaries)
+<li><A HREF="ufiformat.spec.gz">ufiformat.spec.gz</a>(spec file for rpm package 0.9.8) - Kabeさん提供
+<li><A HREF="ufiformat-0.9.7.tar.gz">ufiformat-0.9.7.tar.gz</a>(sources)
+<li><A HREF="ufiformat-0.9.7.tgz">ufiformat-0.9.7.tgz</a>(x86 binaries)
+<li><A HREF="ufiformat-0.9.6.tar.gz">ufiformat-0.9.6.tar.gz</a>(sources)
+<li><A HREF="ufiformat-0.9.6.tgz">ufiformat-0.9.6.tgz</a>(x86 binaries)
+<li><A HREF="ufiformat-0.9.6.spec.gz">ufiformat-0.9.6.spec.gz</a>(spec file for rpm package 0.9.6) - Kabeさん提供
+<li><A HREF="ufiformat-0.9.5.tar.gz">ufiformat-0.9.5.tar.gz</a>(sources)
+<li><A HREF="ufiformat-0.9.5.tgz">ufiformat-0.9.5.tgz</a>(x86 binaries)
+<li><A HREF="ufiformat-0.9.4.tar.gz">ufiformat-0.9.4.tar.gz</a>(sources)
+<li><A HREF="ufiformat-0.9.4.tgz">ufiformat-0.9.4.tgz</a>(x86 binaries)
+<li><A HREF="ufiformat-0.9.3.tar.gz">ufiformat-0.9.3.tar.gz</a>(sources)
+<li><A HREF="ufiformat-0.9.3.tgz">ufiformat-0.9.3.tgz</a>(x86 binaries)
+<li><A HREF="ufiformat-0.9.2.tar.gz">ufiformat-0.9.2.tar.gz</a>(sources)
+<li><A HREF="ufiformat-0.9.2.tgz">ufiformat-0.9.2.tgz</a>(x86 binaries)
+<li><A HREF="ufiformat-0.1.tar.gz">ufiformat-0.1.tar.gz</a>(sources)
+</ul>
+このプログラムは GPL の下で再配布可能です。
+<br>
+<br>
+<p>&#169; 2005-2011 <A HREF=mailto:tedi&#64;tedi.sakura.ne.jp><I>tedi&#64;tedi.sakura.ne.jp</I></A><br>
+</BODY>
+</HTML>
